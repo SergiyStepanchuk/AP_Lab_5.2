@@ -11,7 +11,7 @@ double S(const double &x, const double &eps, int& n)
 	n = 1;
 	double a = x, dob_nopar = 1, dob_par = 1, s = x;
 	while (abs(a) > eps) {
-		dob_nopar *= 2. * n - 1,
+		dob_nopar *= 2. * n - 1;
 		dob_par *= 2. * n;
 		a = (dob_nopar * pow(x, 2 * n + 1)) /
 			(dob_par * (2. * n + 1.));
