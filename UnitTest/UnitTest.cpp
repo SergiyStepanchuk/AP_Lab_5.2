@@ -15,7 +15,7 @@ namespace UnitTest
 		{
 			const double cos = 0.9;
 			int n;
-			Assert::IsFalse(abs(S(cos, 0.0000001, n) - acos(cos)) > 0.000001, L"Incorrect method M!");
+			Assert::IsTrue(abs(S(cos, 0.0000001, n) - acos(cos)) < 0.00001, L"Incorrect method M!");
 		}
 	};
 }

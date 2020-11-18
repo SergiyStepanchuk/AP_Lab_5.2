@@ -1,3 +1,7 @@
+#include <iostream>
+#include <iomanip>
+#include <cmath>
+
 // Lab_5_2
 #include <iostream>
 #include <iomanip>
@@ -6,18 +10,17 @@ using namespace std;
 
 #define M_PI_2     1.57079632679489661923   // pi/2
 
-double S(const double &x, const double &eps, int& n)
+double S(const double& x, const double& eps, int& n)
 {
 	n = 1;
-	double a = x, dob_nopar = 1, dob_par = 1, s = x;
-	while (abs(a) > eps) {
-		dob_nopar *= 2. * n - 1;
-		dob_par *= 2. * n;
-		a = (dob_nopar * pow(x, 2 * n + 1)) /
-			(dob_par * (2. * n + 1.));
-		s += a;
+	double a = pow(x, 3.)/6., s = x + a;
+	do
+	{
 		n++;
-	}
+		a *= (pow(2 * n - 1, 2) * pow(x, 2)) / (2. * n * (2. * n + 1));
+		s += a;
+		
+	} while (abs(a) >= eps);
 	return M_PI_2 - s;
 }
 
@@ -32,7 +35,7 @@ int main()
 	cout << "xk = "; cin >> xk;
 	cout << "dx = "; cin >> dx;
 	cout << "eps = "; cin >> eps;
-	
+
 	cout << "--------------------------------------------------" << endl; // 50
 	cout << "| " << setw(10) << "x" << "| "
 		<< setw(10) << "arccos(x)" << "| "
@@ -54,5 +57,3 @@ int main()
 	cout << "--------------------------------------------------" << endl;
 	return 0;
 }
-
-
