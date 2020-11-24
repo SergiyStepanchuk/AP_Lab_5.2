@@ -1,7 +1,3 @@
-#include <iostream>
-#include <iomanip>
-#include <cmath>
-
 // Lab_5_2
 #include <iostream>
 #include <iomanip>
