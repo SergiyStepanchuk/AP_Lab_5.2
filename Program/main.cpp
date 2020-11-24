@@ -10,6 +10,10 @@ using namespace std;
 
 #define M_PI_2     1.57079632679489661923   // pi/2
 
+double get_r(const int& n, const double& x) {
+	return (pow(2 * n - 1, 2) * pow(x, 2)) / (2. * n * (2. * n + 1));
+}
+
 double S(const double& x, const double& eps, int& n)
 {
 	n = 1;
@@ -17,7 +21,7 @@ double S(const double& x, const double& eps, int& n)
 	do
 	{
 		n++;
-		a *= (pow(2 * n - 1, 2) * pow(x, 2)) / (2. * n * (2. * n + 1));
+		a *= get_r(n, x);
 		s += a;
 		
 	} while (abs(a) >= eps);
